@@ -44,22 +44,24 @@ require("../app/App.php");
             <?php foreach($transaction AS $A){ ?>
             <tr>
                 <th>
-                    <?php echo $A[0];?>
+                    <?php echo $A->getDate();?>
                 </th>
                 <th>
-                    <?php echo $A[1];?>
+                    <?php echo $A->getCheck();?>
                 </th>
                 <th>
-                    <?php echo $A[2];?>
+                    <?php echo $A->getDescription();?>
                 </th>
                 <th>
-                    <?php if($A[3] >0):?><span style="color:green"> <?php 
-                    echo '$'.$A[3];
+                    <?php 
+                    $Amount=$A->getAmount();
+                    if($Amount > 0):?><span style="color:green"> <?php 
+                    echo '$'.$Amount;
                     else :
-                        $A[3]= '$'.$A[3];
+                        $Amount= '$'.$Amount;
                     ?>
                         <span style="color:red"> <?php 
-                    echo $A[3];
+                    echo $Amount;
                         endif;
 
                         ?></span> </th>
